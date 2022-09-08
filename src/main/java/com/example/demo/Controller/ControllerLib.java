@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Library;
 import com.example.demo.service.BookService;
+
 
 
 @RestController
@@ -29,7 +31,7 @@ public class ControllerLib {
 	// get all the books
 	
 	@GetMapping("/books")
-	public List<Book> getBooks(){
+	public List<Library> getBooks(){
 		return this.bookService.getBooks();
 		}
 	// get Information about single book
@@ -37,15 +39,15 @@ public class ControllerLib {
 //	public Book getBook(@PathVariable String bookname ) {
 //		return this.bookService.getbook(bookname);
 //		}
-	@GetMapping("/book/{bookName}")
-	public ResponseEntity<List<Book>> searchbookName(@PathVariable String name){
-		return ResponseEntity.ok(bookService.searchbookName(name));
-	}
+//	@GetMapping("/book/{bookName}")
+//	public ResponseEntity<List<Book>> searchbookName(@PathVariable String name){
+//		return ResponseEntity.ok(bookService.searchbookName(name));
+//	}
 //    to add new books 
-	@PostMapping("/books")
-	public Book addBook(@RequestBody Book book) {    // we  want this from the body so annotation @Requestbody is used 
-		return this.bookService.addBook(book);
-	}
+//	@PostMapping("/books")
+//	public Book addBook(@RequestBody Book book) {    // we  want this from the body so annotation @Requestbody is used 
+//		return this.bookService.addBook(book);
+//	}
 
 
 }

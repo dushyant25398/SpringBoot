@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.DaoLib;
+import com.example.demo.dao.BookRepository;
+import com.example.demo.dao.LibraryRepository;
+import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Library;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -15,8 +18,14 @@ public class BookServiceImpl implements BookService {
 	
 	
 	@Autowired
-	private DaoLib dow;
+	private BookRepository bookRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private LibraryRepository libraryRepository;
 	//List <Book> list;
+	
+	
 	public BookServiceImpl() {
 		
 //		   // constructor to run in initializing of these objects at the start time.
@@ -26,12 +35,16 @@ public class BookServiceImpl implements BookService {
 //			
 			
 	}
+
+	@Override
+	public List<Library> getBooks() {
+		return libraryRepository.findAll();
+		
+		
+	}
 	
 	// fetch all the books
-	@Override
-	public List<Book> getBooks() {
-		return dow.findAll();
-	}
+	
 
 //	// fetch book by name 
 //	@Override
@@ -42,18 +55,18 @@ public class BookServiceImpl implements BookService {
 
 	
 	// to add a book	
-	@Override
-	public Book addBook(Book book) {
-		dow.save(book);
-		
-		return book;
-	}
+//	@Override
+//	public Book addBook(Book book) {
+//		bookRepository.save(book);
+//		
+//		return book;
+//	}
 
-	@Override
-	public List<Book> searchbookName(String name) {
-	    List<Book> book = dow.searchbookName(name);
-		return book;
-	}
+//	@Override
+//	public List<Book> searchbookName(String name) {
+//	    List<Book> book = dow.searchbookName(name);
+//		return book;
+//	}
 
 	
 }
